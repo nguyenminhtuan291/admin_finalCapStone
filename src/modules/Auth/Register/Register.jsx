@@ -27,7 +27,9 @@ function Register()  {
   const { errors } = formState;
   const onSubmit = async (values) => {
     try {
-      await authAPI.register(values);
+      const user = await authAPI.register(values);
+
+      await userAPI.editUser({...user, role:"ADMIN"},user.id);
 
       Swal.fire({
         title: "Success!",
