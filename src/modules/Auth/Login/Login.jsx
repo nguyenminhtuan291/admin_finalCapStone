@@ -13,7 +13,7 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user, error} = useSelector((state) => state.authSlice);
-
+  
   const { register, handleSubmit, formState, setValue } = useForm({
     defaultValues: { email: "", password: "" },
     mode: "onTouched",
@@ -23,34 +23,29 @@ function Login() {
 
   const onSubmit = (values) => {
     dispatch(login(values));
-    
-    if(error){
-      Swal.fire({
-        title: "Error!",
-        text: `${error}`,
-        icon: "error",
-        confirmButtonText: "Close",
-      });
-    }else {
-      Swal.fire({
-        title: "Success!",
-        text: "Congratulations on your successful",
-        icon: "success",
-        confirmButtonText: "Close",
-      });
-    }
-
-    
   };
 
   const handleSetValue = () => {
-    setValue("email", "admin1@gmail.com");
-    setValue("password", "admin1@gmail.com");
+    setValue("email", "adminab@gmail.com");
+    setValue("password", "adminab@gmail.com");
   }
 
-  
+  if(error){
+    Swal.fire({
+      title: "Error!",
+      text: `${error}`,
+      icon: "error",
+      confirmButtonText: "Close",
+    });
+  }
 
   if (user) {
+    Swal.fire({
+      title: "Success!",
+      text: "Congratulations on your successful",
+      icon: "success",
+      confirmButtonText: "Close",
+    });
     return <Navigate to="/admin" />;
   }
   return (

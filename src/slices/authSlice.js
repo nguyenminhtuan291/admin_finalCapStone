@@ -12,6 +12,7 @@ export const login = createAsyncThunk(
     async (values) => {
         try {
             const user = await authAPI.login(values);
+            console.log(user)
             localStorage.setItem("user", JSON.stringify(user.user));
             localStorage.setItem("token", JSON.stringify(user.token));
             return user.user;
@@ -27,6 +28,8 @@ const authSlice = createSlice({
     reducers: {
         logout: (state,action) => {
             localStorage.removeItem("user");
+            localStorage.removeItem("token");
+
             return {...state, user: null}
         }
     },
