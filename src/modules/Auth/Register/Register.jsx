@@ -4,7 +4,7 @@ import { UserAddOutlined } from "@ant-design/icons";
 import { Navigate, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Col, Row } from "antd";
-
+import userAPI from "../../../services/userAPI"
 import authAPI from "../../../services/authAPI";
 import styles from "./Register.module.scss";
 
@@ -36,7 +36,7 @@ function Register()  {
         text: "Congratulations on your successful registration",
         icon: "success",
         confirmButtonText: "Close",
-      });
+      }); 
 
       setSuccessRe(true);
     } catch (error) {
